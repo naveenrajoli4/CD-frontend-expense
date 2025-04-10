@@ -16,7 +16,7 @@ pipeline {
     }
 
     environment {
-        DEBUG = 'true'
+        
         appversion = ''
         region = 'us-east-1'
         acc_ID = '135808959960'
@@ -32,7 +32,7 @@ pipeline {
             steps{
                 script{
                     environment = params.ENVIRONMENT
-                    appVersion = params.version
+                    appversion = params.version
                     // account_id = pipelineGlobals.getAccountID(environment)
                 }
             }
