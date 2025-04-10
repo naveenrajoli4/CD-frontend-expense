@@ -9,7 +9,7 @@ pipeline {
     }
 
     parameters{
-        
+        booleanParam(name: 'deploy', defaultValue: false, description: 'Select to deploy or not')
         choice(name: 'ENVIRONMENT', choices: ['dev', 'qa', 'uat', 'pre-prod', 'prod'], description: 'Select your Environment')
         string(name: 'version',  description: 'Enter your application version')
         // string(name: 'jira-id',  description: 'Enter your jira id')
@@ -27,7 +27,16 @@ pipeline {
     }
     
     stages {
-        
+
+        stage('Setup Environment'){
+            steps{
+                script{
+                    environment = params.ENVIRONMENT
+                    appVersion = params.version
+                    // account_id = pipelineGlobals.getAccountID(environment)
+                }
+            }
+        }
         stage('Deploy Backend') {
             steps {
                 withAWS(region: 'us-east-1', credentials: 'aws-cred') {
