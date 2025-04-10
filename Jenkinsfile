@@ -19,7 +19,7 @@ pipeline {
         
         appversion = ''
         region = 'us-east-1'
-        acc_ID = '135808959960'
+        acc_ID = ''
         project = 'expense'
         environment = ''
         component = 'backend'
@@ -33,7 +33,7 @@ pipeline {
                 script{
                     environment = params.ENVIRONMENT
                     appversion = params.version
-                    // account_id = pipelineGlobals.getAccountID(environment)
+                    acc_ID = pipelineGlobals.getAccountID(environment)
                 }
             }
         }
