@@ -12,7 +12,7 @@ pipeline {
         
         choice(name: 'ENVIRONMENT', choices: ['dev', 'qa', 'uat', 'pre-prod', 'prod'], description: 'Select your Environment')
         string(name: 'version',  description: 'Enter your application version')
-        string(name: 'jira-id',  description: 'Enter your jira id')
+        // string(name: 'jira-id',  description: 'Enter your jira id')
     }
 
     environment {
